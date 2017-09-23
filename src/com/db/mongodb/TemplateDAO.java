@@ -5,7 +5,7 @@
  */
 package com.db.mongodb;
 
-import com.document.template.TemplateKeyEnum;
+import com.document.enumeration.TemplateKeyEnum;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 
@@ -46,19 +46,38 @@ public class TemplateDAO {
 
         try {
             if (null != tempDefined) {
-                updateTemplate(tempDefined);
+                softDeleteTemplate(tempDefined);
             }
             TemplateDAO.templateCollection.insertOne(templateDoc);
             return true;
         } catch (Exception e) {
+            revertSoftDelete(tempDefined);
             System.out.println("insertion failed");
             System.out.println(e);
             return false;
         }
     }
 
-    public static boolean updateTemplate(Document tempDefined) {
+    public static boolean softDeleteTemplate(Document tempDefined) {
 
+        try {
+            Document newObj = new Document();
+            newObj.put(TemplateKeyEnum.Active.toString(), 0);
+
+            Document updateObj = new Document();
+            updateObj.put("$set", newObj);
+
+            templateCollection.updateOne(tempDefined, updateObj);
+
+            return true;
+        } catch (Exception e) {
+            System.out.println("update template failed");
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    private static boolean revertSoftDelete(Document tempDefined) {
         try {
             Document newObj = new Document();
             newObj.put(TemplateKeyEnum.Active.toString(), 0);
