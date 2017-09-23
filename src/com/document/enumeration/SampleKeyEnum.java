@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.document.template;
+package com.document.enumeration;
 
 /**
  *
  * @author admin1
  */
-public enum  TemplateKeyEnum {
-    Active,DateTime,User,Type,TID,Count,Tags
+public enum  SampleKeyEnum {
+    Active,DateTime,User,SID,Quanity,Unit,Receive,Storage
 }
 
 
