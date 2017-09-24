@@ -1,3 +1,4 @@
+package UI;
 import java.awt.Frame;
 
 import javax.swing.*;
