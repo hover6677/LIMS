@@ -66,8 +66,9 @@ public class ProcessingUI extends AbstractUI{
 	}
 	public static void main(String args[])
 	{
-		ProcessingUI pui = new ProcessingUI();
-		ReceivingUI rui = new ReceivingUI();
+		//ProcessingUI pui = new ProcessingUI();
+		//ReceivingUI rui = new ReceivingUI();
+		StorageUI sui = new StorageUI();
 		
 		
 	}
