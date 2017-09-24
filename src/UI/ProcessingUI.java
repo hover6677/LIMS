@@ -5,6 +5,8 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.SoftBevelBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -39,7 +41,7 @@ public class ProcessingUI extends JFrame{
 	String button1;
 	
 	private int totNum;
-	private DefaultListModel<Integer> listModelLeft;
+	private SpinnerListModel listModelLeft;
 	private JPanel panel_1;
 	private ArrayList<JTextField> arrayOfTxtBox;
 	
@@ -63,7 +65,7 @@ public class ProcessingUI extends JFrame{
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.GRAY);
-		panel.setBounds(0, 6, 382, 466);
+		panel.setBounds(0, 6, 382, 469);
 		panel.setBorder(BorderFactory.createRaisedBevelBorder());
 		getContentPane().add(panel);
 		panel.setLayout(null);
@@ -80,6 +82,7 @@ public class ProcessingUI extends JFrame{
 		panel.add(lblNewLabel);
 		
 		JTextField textField = new JTextField();
+		lblNewLabel.setLabelFor(textField);
 		textField.setBounds(183, 41, 172, 26);
 		textField.setBorder(BorderFactory.createSoftBevelBorder(SoftBevelBorder.LOWERED));
 		panel.add(textField);
@@ -92,31 +95,24 @@ public class ProcessingUI extends JFrame{
 		
 		getLabelTotNum();
 		
-		
-		
-		final JList<Integer> list = new JList<Integer>(listModelLeft);
-		list.setVisibleRowCount(12);
-		list.setBounds(183, 147, 55, 195);
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list.setBorder(BorderFactory.createSoftBevelBorder(SoftBevelBorder.LOWERED));
-		list.addListSelectionListener(new ListSelectionListener(){
+		final JSpinner spinner = new JSpinner();
+		lblNoOfSteps.setLabelFor(spinner);
+		spinner.setToolTipText("Select No. of Labels");
+		spinner.setBounds(183, 149, 89, 27);
+		spinner.setModel(listModelLeft);
+		//spinner.get.setBorder(BorderFactory.createSoftBevelBorder(SoftBevelBorder.LOWERED));
+		spinner.addChangeListener(new ChangeListener(){
 
 			@Override
-			public void valueChanged(ListSelectionEvent e) {
+			public void stateChanged(ChangeEvent e) {
 				// TODO Auto-generated method stub
-				if(e.getValueIsAdjusting()==false){
-					int numOfTxtBox =list.getSelectedIndex()+1;
-					System.out.println(numOfTxtBox);
-					addTxtBox(numOfTxtBox);
-				}
+				int numOfTxtBox =(int) spinner.getValue();
+				System.out.println(numOfTxtBox);
+				addTxtBox(numOfTxtBox);
 			}
 			
 		});
-		panel.add(list);
-		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(223, 148, 15, 194);
-		panel.add(scrollBar);
+		panel.add(spinner);
 		
 		JButton btnSave = new JButton(button1);
 		btnSave.setBounds(520, 446, 117, 29);
@@ -143,25 +139,32 @@ public class ProcessingUI extends JFrame{
 	
 	protected void getLabelTotNum(){
 		totNum=getTotNum();
-		listModelLeft=new DefaultListModel<Integer>();
+		listModelLeft=new SpinnerListModel();
+		ArrayList<Integer> modelList = new ArrayList<Integer>();
+		modelList.add(0);
 		for(int i =1; i<=totNum;i++)
 		{
-			listModelLeft.addElement(i);
+			modelList.add(i);
+			
 		}
+		listModelLeft.setList(modelList);
+		listModelLeft.setValue(0);
 		
 	}
 
 	// this function is to get totNum from database
 	protected int getTotNum(){
-		return 8;
+		return 12;
 	}
 	private void addTxtBox(int numOfTxtBox){
 		panel_1.removeAll();
 		arrayOfTxtBox  = new ArrayList<JTextField>();
 		for(int i =0; i<numOfTxtBox;i++)
 		{	
-			JLabel label = new JLabel("Label"+(i+1));
-			
+			JLabel label;
+			if(i<9)
+			label = new JLabel("Label0"+(i+1));
+			else label = new JLabel("Label"+(i+1));
 			JTextField txtBox = new JTextField();
 			txtBox.setColumns(6);
 			txtBox.setBorder(BorderFactory.createSoftBevelBorder(SoftBevelBorder.LOWERED));
