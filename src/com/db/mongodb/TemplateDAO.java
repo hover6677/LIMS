@@ -6,7 +6,10 @@
 package com.db.mongodb;
 
 import com.document.enumeration.TemplateKeyEnum;
+import com.mongodb.Block;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import java.util.ArrayList;
 import org.bson.Document;
 
 /**
@@ -121,6 +124,22 @@ public class TemplateDAO {
 
     public static void closeDBConn() {
         TemplateDAO.DBConn.closeDB();
+    }
+    
+    public static ArrayList fetchTemplate(Document templateRequest)
+    {
+        ArrayList finds = new ArrayList();
+        templateCollection.find(templateRequest).into(finds);
+        return finds;
+    }
+    
+    public static ArrayList fetchTemplate(String templateType)
+    {
+        Document templateRequest = new Document();
+        templateRequest.append(TemplateKeyEnum.Type.toString(),templateType);
+        templateRequest.append(TemplateKeyEnum.Active.toString(),1);
+
+        return fetchTemplate(templateRequest);
     }
 
 }

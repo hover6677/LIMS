@@ -8,6 +8,7 @@ package com.db.mongodb;
 import com.document.enumeration.SampleKeyEnum;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCollection;
+import java.util.ArrayList;
 import org.bson.Document;
 
 /**
@@ -134,6 +135,13 @@ public class SampleDAO {
 
     public static void closeDBConn() {
         SampleDAO.DBConn.closeDB();
+    }
+    
+    public static ArrayList fetchSample(Document sampleRequest)
+    {
+        ArrayList finds = new ArrayList();
+        sampleCollection.find(sampleRequest).into(finds);
+        return finds;
     }
 
 }
