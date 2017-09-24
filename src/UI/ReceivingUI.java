@@ -1,11 +1,21 @@
 package UI;
 
-public class ReceivingUI extends ProcessingUI {
+public class ReceivingUI extends AbstractUI {
 	protected ProcessingUI puiToBeDecorated;
-	public ReceivingUI(String t, String l1, String l2,String l3, String b1)
+	public ReceivingUI()
 	{
-		super(t,l1,l2,l3,b1);
+		super("Receiving(Admin)","Template ID", "No. of Tags","Labels","Save");
 		
+		
+	}
+	@Override
+	protected int getTotNum() {
+		// TODO Auto-generated method stub
+		return 8;
+	}
+	@Override
+	void buttonAction() {
+		// TODO Auto-generated method stub
 		
 	}
 }

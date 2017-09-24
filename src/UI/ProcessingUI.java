@@ -21,7 +21,7 @@ import java.awt.event.ActionListener;
 import java.awt.Color;
 
 
-public class ProcessingUI extends JFrame{
+public class ProcessingUI extends AbstractUI{
 
 	/**
 	 * 
@@ -47,142 +47,27 @@ public class ProcessingUI extends JFrame{
 	
 	
 
-	public ProcessingUI(String t,String l1, String l2,String l3, String b1)
+	public ProcessingUI()
 	{
-		setResizable(false);
-		//super(title);
-		title =t;
-		label1 = l1;
-		label2 = l2;
-		label3 = l3;
-		button1 = b1;
-		setTitle(title);
-		setSize(643,500);  
-		getContentPane().setLayout(null);  
-		
-
-		
-		
-		JPanel panel = new JPanel();
-		panel.setForeground(Color.GRAY);
-		panel.setBounds(0, 6, 382, 469);
-		panel.setBorder(BorderFactory.createRaisedBevelBorder());
-		getContentPane().add(panel);
-		panel.setLayout(null);
-		
-		panel_1 = new JPanel();
-		panel_1.setBounds(394, 6, 243, 428);
-		panel_1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createRaisedBevelBorder(), label3));
-		getContentPane().add(panel_1);
-		panel_1.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 10));
-		
-		JLabel lblNewLabel = new JLabel(label1);
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-		lblNewLabel.setBounds(23, 39, 123, 27);
-		panel.add(lblNewLabel);
-		
-		JTextField textField = new JTextField();
-		lblNewLabel.setLabelFor(textField);
-		textField.setBounds(183, 41, 172, 26);
-		textField.setBorder(BorderFactory.createSoftBevelBorder(SoftBevelBorder.LOWERED));
-		panel.add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNoOfSteps = new JLabel(label2);
-		lblNoOfSteps.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-		lblNoOfSteps.setBounds(23, 147, 123, 27);
-		panel.add(lblNoOfSteps);
-		
-		getLabelTotNum();
-		
-		final JSpinner spinner = new JSpinner();
-		lblNoOfSteps.setLabelFor(spinner);
-		spinner.setToolTipText("Select No. of Labels");
-		spinner.setBounds(183, 149, 89, 27);
-		spinner.setModel(listModelLeft);
-		//spinner.get.setBorder(BorderFactory.createSoftBevelBorder(SoftBevelBorder.LOWERED));
-		spinner.addChangeListener(new ChangeListener(){
-
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				// TODO Auto-generated method stub
-				int numOfTxtBox =(int) spinner.getValue();
-				System.out.println(numOfTxtBox);
-				addTxtBox(numOfTxtBox);
-			}
-			
-		});
-		panel.add(spinner);
-		
-		JButton btnSave = new JButton(button1);
-		btnSave.setBounds(520, 446, 117, 29);
-		btnSave.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				buttonAction();
-			}
-			
-		});
-		getContentPane().add(btnSave);
-		
-		
-		
-//		JScrollBar scrollBar_1 = new JScrollBar();
-//		panel_1.add(scrollBar_1);
-		
-		setVisible(true);
-		 
+		super("Process(Admin)","Process Name","No. of Steps","Labels","Save");
 		
 	}
 	
-	protected void getLabelTotNum(){
-		totNum=getTotNum();
-		listModelLeft=new SpinnerListModel();
-		ArrayList<Integer> modelList = new ArrayList<Integer>();
-		modelList.add(0);
-		for(int i =1; i<=totNum;i++)
-		{
-			modelList.add(i);
-			
-		}
-		listModelLeft.setList(modelList);
-		listModelLeft.setValue(0);
-		
-	}
 
 	// this function is to get totNum from database
+	@Override
 	protected int getTotNum(){
 		return 12;
 	}
-	private void addTxtBox(int numOfTxtBox){
-		panel_1.removeAll();
-		arrayOfTxtBox  = new ArrayList<JTextField>();
-		for(int i =0; i<numOfTxtBox;i++)
-		{	
-			JLabel label;
-			if(i<9)
-			label = new JLabel("Label0"+(i+1));
-			else label = new JLabel("Label"+(i+1));
-			JTextField txtBox = new JTextField();
-			txtBox.setColumns(6);
-			txtBox.setBorder(BorderFactory.createSoftBevelBorder(SoftBevelBorder.LOWERED));
-			arrayOfTxtBox.add(txtBox);
-			panel_1.add(label);
-			panel_1.add(txtBox);
-		}
-		panel_1.updateUI();
-		return;
-	}
+	
+	@Override
 	protected void buttonAction(){
 		
 	}
 	public static void main(String args[])
 	{
-		ProcessingUI pui = new ProcessingUI("Process(Admin)","Process Name","No. of Steps","Labels","Save");
-		ReceivingUI rui = new ReceivingUI("Receiving(Admin)","Template ID", "No. of Tags","Labels","Save");
-		System.out.println("end");
+		ProcessingUI pui = new ProcessingUI();
+		ReceivingUI rui = new ReceivingUI();
 		
 		
 	}
