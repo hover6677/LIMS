@@ -2,6 +2,9 @@ package UI;
 import java.awt.Frame;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.SoftBevelBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -13,6 +16,7 @@ import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 
 
 public class ProcessingUI extends JFrame{
@@ -31,6 +35,7 @@ public class ProcessingUI extends JFrame{
 	String title;
 	String label1;
 	String label2;
+	String label3;
 	String button1;
 	
 	private int totNum;
@@ -40,24 +45,32 @@ public class ProcessingUI extends JFrame{
 	
 	
 
-	public ProcessingUI(String t,String l1, String l2, String b1)
+	public ProcessingUI(String t,String l1, String l2,String l3, String b1)
 	{
+		setResizable(false);
 		//super(title);
 		title =t;
 		label1 = l1;
 		label2 = l2;
+		label3 = l3;
 		button1 = b1;
 		setTitle(title);
 		setSize(643,500);  
 		getContentPane().setLayout(null);  
 		
+
+		
+		
 		JPanel panel = new JPanel();
+		panel.setForeground(Color.GRAY);
 		panel.setBounds(0, 6, 382, 466);
+		panel.setBorder(BorderFactory.createRaisedBevelBorder());
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		panel_1 = new JPanel();
 		panel_1.setBounds(394, 6, 243, 428);
+		panel_1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createRaisedBevelBorder(), label3));
 		getContentPane().add(panel_1);
 		panel_1.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 10));
 		
@@ -68,6 +81,7 @@ public class ProcessingUI extends JFrame{
 		
 		JTextField textField = new JTextField();
 		textField.setBounds(183, 41, 172, 26);
+		textField.setBorder(BorderFactory.createSoftBevelBorder(SoftBevelBorder.LOWERED));
 		panel.add(textField);
 		textField.setColumns(10);
 		
@@ -81,8 +95,10 @@ public class ProcessingUI extends JFrame{
 		
 		
 		final JList<Integer> list = new JList<Integer>(listModelLeft);
-		list.setBounds(183, 147, 172, 195);
+		list.setVisibleRowCount(12);
+		list.setBounds(183, 147, 55, 195);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.setBorder(BorderFactory.createSoftBevelBorder(SoftBevelBorder.LOWERED));
 		list.addListSelectionListener(new ListSelectionListener(){
 
 			@Override
@@ -99,7 +115,7 @@ public class ProcessingUI extends JFrame{
 		panel.add(list);
 		
 		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(340, 148, 15, 194);
+		scrollBar.setBounds(223, 148, 15, 194);
 		panel.add(scrollBar);
 		
 		JButton btnSave = new JButton(button1);
@@ -109,7 +125,7 @@ public class ProcessingUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+				buttonAction();
 			}
 			
 		});
@@ -125,7 +141,7 @@ public class ProcessingUI extends JFrame{
 		
 	}
 	
-	private void getLabelTotNum(){
+	protected void getLabelTotNum(){
 		totNum=getTotNum();
 		listModelLeft=new DefaultListModel<Integer>();
 		for(int i =1; i<=totNum;i++)
@@ -136,7 +152,7 @@ public class ProcessingUI extends JFrame{
 	}
 
 	// this function is to get totNum from database
-	private int getTotNum(){
+	protected int getTotNum(){
 		return 8;
 	}
 	private void addTxtBox(int numOfTxtBox){
@@ -148,6 +164,7 @@ public class ProcessingUI extends JFrame{
 			
 			JTextField txtBox = new JTextField();
 			txtBox.setColumns(6);
+			txtBox.setBorder(BorderFactory.createSoftBevelBorder(SoftBevelBorder.LOWERED));
 			arrayOfTxtBox.add(txtBox);
 			panel_1.add(label);
 			panel_1.add(txtBox);
@@ -155,10 +172,13 @@ public class ProcessingUI extends JFrame{
 		panel_1.updateUI();
 		return;
 	}
+	protected void buttonAction(){
+		
+	}
 	public static void main(String args[])
 	{
-		ProcessingUI pui = new ProcessingUI("Process(Admin)","Process Name","No. of Steps","Save");
-		ReceivingUI rui = new ReceivingUI("Receiving(Admin)","Template ID", "No. of Tags","Save");
+		ProcessingUI pui = new ProcessingUI("Process(Admin)","Process Name","No. of Steps","Labels","Save");
+		ReceivingUI rui = new ReceivingUI("Receiving(Admin)","Template ID", "No. of Tags","Labels","Save");
 		System.out.println("end");
 		
 		
