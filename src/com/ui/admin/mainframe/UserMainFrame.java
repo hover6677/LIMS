@@ -38,16 +38,16 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import com.ui.admin.mainapp.MainFrameApp;
+import com.ui.user.mainapp.MainFrameApp;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class AdminMainFrame extends javax.swing.JFrame {
+public class UserMainFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form Antenna
      */
-    public AdminMainFrame() {
+    public UserMainFrame() {
         MainFrameApp.MainFrameApp();
         initComponents();
         MainFrameApp.setTabCount(this.jTabbedPane1.getTabCount());
@@ -458,7 +458,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
             MainFrameApp.readyToSave(this.jTabbedPane1.getSelectedIndex());
             MainFrameApp.saveFile(true);
         } catch (IOException ex) {
-            Logger.getLogger(AdminMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserMainFrame.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Close File Error");
         }
     }//GEN-LAST:event_saveBtnActionPerformed
@@ -518,7 +518,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
                 ((JTextField) selectedJTextField.get(i)).setText("");
 
             } catch (JSONException ex) {
-                Logger.getLogger(AdminMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UserMainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         if (isAllFilled(o)) {
@@ -572,7 +572,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
                     return false;
                 }
             } catch (JSONException ex) {
-                Logger.getLogger(AdminMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UserMainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 return false;
             }
         }
@@ -621,14 +621,30 @@ public class AdminMainFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserMainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -649,7 +665,7 @@ public class AdminMainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminMainFrame().setVisible(true);
+                new UserMainFrame().setVisible(true);
             }
         });
     }

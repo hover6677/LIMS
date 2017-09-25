@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ui.admin.mainapp;
+package com.ui.user.mainapp;
 
 import java.io.File;
 import java.io.IOException;
