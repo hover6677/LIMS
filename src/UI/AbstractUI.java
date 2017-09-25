@@ -19,6 +19,8 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
+import java.awt.CardLayout;
+import javax.swing.GroupLayout.Alignment;
 
 
 public abstract class AbstractUI extends JFrame{
@@ -65,40 +67,41 @@ public abstract class AbstractUI extends JFrame{
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.GRAY);
-		panel.setBounds(0, 6, 382, 469);
+		panel.setBounds(6, 6, 631, 121);
 		panel.setBorder(BorderFactory.createRaisedBevelBorder());
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		panel_1 = new JPanel();
-		panel_1.setBounds(394, 6, 243, 428);
+		panel_1.setBounds(6, 139, 631, 298);
 		panel_1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createRaisedBevelBorder(), label3));
 		getContentPane().add(panel_1);
-		panel_1.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 10));
+		panel_1.setLayout(null);
+
 		
 		JLabel lblNewLabel = new JLabel(label1);
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-		lblNewLabel.setBounds(23, 39, 123, 27);
+		lblNewLabel.setBounds(123, 16, 123, 27);
 		panel.add(lblNewLabel);
 		
 		JTextField textField = new JTextField();
 		lblNewLabel.setLabelFor(textField);
-		textField.setBounds(183, 41, 172, 26);
+		textField.setBounds(258, 18, 172, 26);
 		textField.setBorder(BorderFactory.createSoftBevelBorder(SoftBevelBorder.LOWERED));
 		panel.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNoOfSteps = new JLabel(label2);
 		lblNoOfSteps.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-		lblNoOfSteps.setBounds(23, 147, 123, 27);
+		lblNoOfSteps.setBounds(123, 70, 123, 27);
 		panel.add(lblNoOfSteps);
 		
 		getLabelTotNum();
 		
-		final JSpinner spinner = new JSpinner();
+		JSpinner spinner = new JSpinner();
 		lblNoOfSteps.setLabelFor(spinner);
 		spinner.setToolTipText("Select No. of Labels");
-		spinner.setBounds(183, 149, 89, 27);
+		spinner.setBounds(258, 72, 89, 27);
 		spinner.setModel(listModelLeft);
 		//spinner.get.setBorder(BorderFactory.createSoftBevelBorder(SoftBevelBorder.LOWERED));
 		spinner.addChangeListener(new ChangeListener(){
@@ -106,7 +109,8 @@ public abstract class AbstractUI extends JFrame{
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				// TODO Auto-generated method stub
-				int numOfTxtBox =Integer.parseInt(spinner.getValue().toString());
+				JSpinner sp =(JSpinner)e.getSource();
+				int numOfTxtBox =Integer.parseInt(sp.getValue().toString());
 				System.out.println(numOfTxtBox);
 				addTxtBox(numOfTxtBox);
 			}
@@ -155,6 +159,16 @@ public abstract class AbstractUI extends JFrame{
 	// this function is to get totNum from database
 	abstract protected int getTotNum();
 	protected void addTxtBox(int numOfTxtBox){
+		int xinit = 24;
+		int yinit = 40;
+		int xoffsetLabel = 55;
+		int xoffset = 95;
+		int yoffset = 45;
+		int x = xinit;
+		int y = yinit;
+		int width = 90;
+		int height = 25;
+				
 		panel_1.removeAll();
 		arrayOfTxtBox  = new ArrayList<JTextField>();
 		for(int i =0; i<numOfTxtBox;i++)
@@ -163,10 +177,20 @@ public abstract class AbstractUI extends JFrame{
 			if(i<9)
 			label = new JLabel("Label0"+(i+1));
 			else label = new JLabel("Label"+(i+1));
+			label.setBounds(x, y, width, height);
+			x+=xoffsetLabel;
 			JTextField txtBox = new JTextField();
+			txtBox.setBounds(x, y, width, height);
 			txtBox.setColumns(6);
 			txtBox.setBorder(BorderFactory.createSoftBevelBorder(SoftBevelBorder.LOWERED));
+			x+=xoffset;
+			if(x>=550) {
+				x= xinit;
+				y+=yoffset;
+			}
+			
 			arrayOfTxtBox.add(txtBox);
+			
 			panel_1.add(label);
 			panel_1.add(txtBox);
 		}
