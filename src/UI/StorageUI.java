@@ -54,7 +54,7 @@ public class StorageUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				JComboBox cb = (JComboBox)e.getSource();
-				int n = (int)cb.getSelectedItem();
+				int n = Integer.parseInt(cb.getSelectedItem().toString());
 				addTxtBox(n,panel_1);
 			}
 			

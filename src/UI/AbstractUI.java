@@ -106,7 +106,7 @@ public abstract class AbstractUI extends JFrame{
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				// TODO Auto-generated method stub
-				int numOfTxtBox =(int) spinner.getValue();
+				int numOfTxtBox =Integer.parseInt(spinner.getValue().toString());
 				System.out.println(numOfTxtBox);
 				addTxtBox(numOfTxtBox);
 			}
