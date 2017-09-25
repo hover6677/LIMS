@@ -2,6 +2,7 @@ package UI;
 import java.awt.Frame;
 
 import javax.swing.*;
+import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.SoftBevelBorder;
@@ -66,8 +67,30 @@ public class ProcessingUI extends AbstractUI{
 	}
 	public static void main(String args[])
 	{
-		//ProcessingUI pui = new ProcessingUI();
-		ReceivingUI rui = new ReceivingUI();
+		String lookAndFeel = UIManager.getSystemLookAndFeelClassName();
+		try {
+			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+		        if ("Nimbus".equals(info.getName())) {
+		            UIManager.setLookAndFeel(info.getClassName());
+		            break;
+		        }
+		    }
+			ProcessingUI pui = new ProcessingUI();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//ReceivingUI rui = new ReceivingUI();
 		//StorageUI sui = new StorageUI();
 		
 		
