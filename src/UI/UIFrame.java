@@ -21,6 +21,7 @@ public class UIFrame extends JFrame{
 		tabbedPane.addTab("Receiving", new ReceivingUI());
 		tabbedPane.addTab("Processing", new ProcessingUI());
 		tabbedPane.addTab("Storage", new StorageUI());
+		tabbedPane.addTab("Report", new ReportUI());
 		
 		JPanel imagePanel = new JPanel();
 		imagePanel.setBounds(712, 13, 207, 538);
