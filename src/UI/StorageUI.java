@@ -10,32 +10,33 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class StorageUI extends JFrame {
+public class StorageUI extends JPanel {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private DefaultComboBoxModel<Integer> cbm;
 	public StorageUI() {
-		System.out.println("Storageui");
-		setTitle("Storage (Admin)");
+		//System.out.println("Storageui");
+		//setTitle("Storage (Admin)");
 		setSize(620,330);
-		setResizable(false);
-		getContentPane().setLayout(null);
+		//setResizable(false);
+		setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(6, 34, 609, 62);
-		getContentPane().add(panel);
+		add(panel);
 		panel.setBorder(BorderFactory.createRaisedBevelBorder());
 		panel.setLayout(null);
 		
 		final JPanel panel_1 = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
+		flowLayout.setHgap(40);
 		flowLayout.setVgap(20);
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		panel_1.setBounds(6, 108, 609, 193);
 		panel_1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createRaisedBevelBorder(), "Storages"));
-		getContentPane().add(panel_1);
+		add(panel_1);
 		panel.setLayout(null);
 		
 		JLabel lblNoOfStorage = new JLabel("No. of Storage");
@@ -86,15 +87,16 @@ public class StorageUI extends JFrame {
 		ArrayList<JTextField> arrayOfTxtBox  = new ArrayList<JTextField>();
 		for(int i =0; i<numOfTxtBox;i++)
 		{	
-			JLabel label;
-			if(i<9)
-			label = new JLabel("Label0"+(i+1));
-			else label = new JLabel("Label"+(i+1));
+//			JLabel label;
+//			if(i<9)
+//			label = new JLabel("Label0"+(i+1));
+//			else label = new JLabel("Label"+(i+1));
 			JTextField txtBox = new JTextField();
 			txtBox.setColumns(6);
 			txtBox.setBorder(BorderFactory.createSoftBevelBorder(SoftBevelBorder.LOWERED));
 			arrayOfTxtBox.add(txtBox);
-			panel_1.add(label);
+			txtBox.setToolTipText("Label"+(i+1));
+//			panel_1.add(label);
 			panel_1.add(txtBox);
 		}
 		panel_1.updateUI();

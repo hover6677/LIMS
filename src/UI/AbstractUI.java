@@ -23,7 +23,7 @@ import java.awt.CardLayout;
 import javax.swing.GroupLayout.Alignment;
 
 
-public abstract class AbstractUI extends JFrame{
+public abstract class AbstractUI extends JPanel{
 
 	/**
 	 * 
@@ -51,31 +51,32 @@ public abstract class AbstractUI extends JFrame{
 
 	public AbstractUI(String t,String l1, String l2,String l3, String b1)
 	{
-		setResizable(false);
+		//setResizable(false);
 		//super(title);
 		title =t;
 		label1 = l1;
 		label2 = l2;
 		label3 = l3;
 		button1 = b1;
-		setTitle(title);
-		setSize(643,500);  
-		getContentPane().setLayout(null);  
+		//setTitle(title);
+		setSize(701,499);  
+		//getContentPane().setLayout(null);
+		setLayout(null);
 		
 
 		
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.GRAY);
-		panel.setBounds(6, 6, 631, 121);
+		panel.setBounds(6, 6, 683, 121);
 		panel.setBorder(BorderFactory.createRaisedBevelBorder());
-		getContentPane().add(panel);
+		add(panel);
 		panel.setLayout(null);
 		
 		panel_1 = new JPanel();
-		panel_1.setBounds(6, 139, 631, 298);
+		panel_1.setBounds(6, 139, 683, 298);
 		panel_1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createRaisedBevelBorder(), label3));
-		getContentPane().add(panel_1);
+		add(panel_1);
 		panel_1.setLayout(null);
 
 		
@@ -129,7 +130,7 @@ public abstract class AbstractUI extends JFrame{
 			}
 			
 		});
-		getContentPane().add(btnSave);
+		add(btnSave);
 		
 		
 		
@@ -159,7 +160,7 @@ public abstract class AbstractUI extends JFrame{
 	// this function is to get totNum from database
 	abstract protected int getTotNum();
 	protected void addTxtBox(int numOfTxtBox){
-		int xinit = 24;
+		int xinit = 12;
 		int yinit = 40;
 		int xoffsetLabel = 55;
 		int xoffset = 95;
@@ -173,11 +174,11 @@ public abstract class AbstractUI extends JFrame{
 		arrayOfTxtBox  = new ArrayList<JTextField>();
 		for(int i =0; i<numOfTxtBox;i++)
 		{	
-			JLabel label;
-			if(i<9)
-			label = new JLabel("Label0"+(i+1));
-			else label = new JLabel("Label"+(i+1));
-			label.setBounds(x, y, width, height);
+//			JLabel label;
+//			if(i<9)
+//			label = new JLabel("Label0"+(i+1));
+//			else label = new JLabel("Label"+(i+1));
+//			label.setBounds(x, y, width, height);
 			x+=xoffsetLabel;
 			JTextField txtBox = new JTextField();
 			txtBox.setBounds(x, y, width, height);
@@ -188,10 +189,10 @@ public abstract class AbstractUI extends JFrame{
 				x= xinit;
 				y+=yoffset;
 			}
-			
+			txtBox.setToolTipText("Label"+(i+1));
 			arrayOfTxtBox.add(txtBox);
 			
-			panel_1.add(label);
+			//panel_1.add(label);
 			panel_1.add(txtBox);
 		}
 		panel_1.updateUI();
