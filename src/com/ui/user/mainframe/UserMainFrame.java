@@ -29,6 +29,7 @@
  */
 package com.ui.admin.mainframe;
 
+import UI.ReportUI;
 import java.awt.Component;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,6 +40,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import com.ui.user.mainapp.MainFrameApp;
+import java.awt.Font;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.border.EmptyBorder;
 import org.json.JSONException;
 import org.json.JSONObject;
 import javax.swing.table.TableColumn;
@@ -126,6 +131,9 @@ public class UserMainFrame extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jTextField16 = new javax.swing.JTextField();
         clearBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
 
@@ -205,14 +213,9 @@ public class UserMainFrame extends javax.swing.JFrame {
         jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
+                {"tag1 ", ""},
+                {"tag2", ""},
+                {"tag3", "test3"},
                 {null, null},
                 {null, null},
                 {null, null},
@@ -666,15 +669,49 @@ public class UserMainFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Storage", jPanel3);
 
+        jLabel14.setText("Sample ID");
+
+        jButton7.setText("Search");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jTextField16.setText("Cola - 89856");
+        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField16ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 0, Short.MAX_VALUE)
+            .add(jPanel5Layout.createSequentialGroup()
+                .add(41, 41, 41)
+                .add(jLabel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 90, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jTextField16, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 204, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButton7)
+                .addContainerGap(281, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 0, Short.MAX_VALUE)
+            .add(jPanel5Layout.createSequentialGroup()
+                .add(18, 18, 18)
+                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jButton7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jTextField16, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(281, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Report", jPanel5);
@@ -837,6 +874,28 @@ public class UserMainFrame extends javax.swing.JFrame {
 
         }*/
     }//GEN-LAST:event_jComboBoxTagsActionPerformed
+
+    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField16ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        String[] labelArray = {"name", "uid", "temperature"};
+        String[][] dataArray = {
+            {"Tom", "1313", "36"},
+            {"Allen", "2351", "37.5"}
+        };
+        JTable table = new JTable(dataArray, labelArray);
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        table.setBorder(new EmptyBorder(1, 1, 0, 0));
+
+        this.jPanel5.add(table);         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+
+    }//GEN-LAST:event_jButton7MouseClicked
 
     private void clearCountLabel() {
         JLabel selectedCountLabel = getSelectedCountLabel();
@@ -1031,6 +1090,7 @@ public class UserMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBoxTags;
     private javax.swing.JComboBox<String> jComboBoxTags1;
     private javax.swing.JComboBox<String> jComboBoxTags2;
@@ -1044,6 +1104,7 @@ public class UserMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1078,6 +1139,7 @@ public class UserMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
