@@ -1,5 +1,6 @@
 package UI;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -10,12 +11,13 @@ import javax.swing.UIManager.LookAndFeelInfo;
 
 public class UIFrame extends JFrame{
 	public UIFrame() {
-		setTitle("Label Printer");
+		setTitle("LIMS");
 		setResizable(false);
-		setSize(937,594);
+		setSize(765,475);
+                //setIcon(new ImageIcon(UIFrame.class.getResource("/resources/logo.png")));
+                
 		getContentPane().setLayout(null);
-		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+                JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(12, 13, 688, 538);
 		getContentPane().add(tabbedPane);
 		tabbedPane.addTab("Receiving", new ReceivingUI());
@@ -26,7 +28,7 @@ public class UIFrame extends JFrame{
 		JPanel imagePanel = new JPanel();
 		imagePanel.setBounds(712, 13, 207, 538);
 		imagePanel.setLayout(null);
-		
+		/*
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setIcon(new ImageIcon(UIFrame.class.getResource("/resources/logo.png")));
@@ -42,7 +44,9 @@ public class UIFrame extends JFrame{
 		lblNewLabel_1.setIcon(new ImageIcon(UIFrame.class.getResource("/resources/Barcode.jpg")));
 		lblNewLabel_1.setBounds(12, 150, 183, 270);
 		imagePanel.add(lblNewLabel_1);
+                */
 		setVisible(true);
+                
 	}
 	public static void main(String args[])
 	{
