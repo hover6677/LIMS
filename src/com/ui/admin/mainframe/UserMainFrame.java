@@ -38,6 +38,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import com.ui.user.mainapp.MainFrameApp;
 import java.awt.Font;
@@ -47,6 +48,9 @@ import javax.swing.border.EmptyBorder;
 import org.json.JSONException;
 import org.json.JSONObject;
 import javax.swing.table.TableColumn;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class UserMainFrame extends javax.swing.JFrame {
 
@@ -690,29 +694,29 @@ public class UserMainFrame extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout = new GroupLayout(jPanel5);
         jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel5Layout.createSequentialGroup()
-                .add(41, 41, 41)
-                .add(jLabel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 90, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jTextField16, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 204, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton7)
-                .addContainerGap(281, Short.MAX_VALUE))
+        	jPanel5Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(jPanel5Layout.createSequentialGroup()
+        			.addGap(41)
+        			.addComponent(jLabel14, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addComponent(jTextField16, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(jButton7)
+        			.addContainerGap(142, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel5Layout.createSequentialGroup()
-                .add(18, 18, 18)
-                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButton7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextField16, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(281, Short.MAX_VALUE))
+        	jPanel5Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(jPanel5Layout.createSequentialGroup()
+        			.addGap(18)
+        			.addGroup(jPanel5Layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jLabel14, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(jButton7, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(jTextField16, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+        			.addContainerGap(281, Short.MAX_VALUE))
         );
+        jPanel5.setLayout(jPanel5Layout);
 
         jTabbedPane1.addTab("Report", jPanel5);
 
@@ -885,12 +889,43 @@ public class UserMainFrame extends javax.swing.JFrame {
             {"Tom", "1313", "36"},
             {"Allen", "2351", "37.5"}
         };
+        //JScrollPane tablePane = new JScrollPane();
+        
         JTable table = new JTable(dataArray, labelArray);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.setFont(new Font("Tahoma", Font.PLAIN, 15));
         table.setBorder(new EmptyBorder(1, 1, 0, 0));
-
+        jPanel5Layout.setHorizontalGroup(
+            	jPanel5Layout.createParallelGroup(Alignment.LEADING)
+            		.addGroup(jPanel5Layout.createSequentialGroup()
+            			.addGroup(jPanel5Layout.createParallelGroup(Alignment.LEADING)
+            				.addGroup(jPanel5Layout.createSequentialGroup()
+            					.addGap(41)
+            					.addComponent(jLabel14, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+            					.addPreferredGap(ComponentPlacement.UNRELATED)
+            					.addComponent(jTextField16, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
+            					.addPreferredGap(ComponentPlacement.RELATED)
+            					.addComponent(jButton7))
+            				.addGroup(jPanel5Layout.createSequentialGroup()
+            					.addGap(24)
+            					.addComponent(table, GroupLayout.PREFERRED_SIZE, 547, GroupLayout.PREFERRED_SIZE)))
+            			.addContainerGap(142, Short.MAX_VALUE))
+            );
+            jPanel5Layout.setVerticalGroup(
+            	jPanel5Layout.createParallelGroup(Alignment.LEADING)
+            		.addGroup(jPanel5Layout.createSequentialGroup()
+            			.addGap(18)
+            			.addGroup(jPanel5Layout.createParallelGroup(Alignment.BASELINE)
+            				.addComponent(jLabel14, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+            				.addComponent(jButton7, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+            				.addComponent(jTextField16, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+            			.addGap(18)
+            			.addComponent(table, GroupLayout.PREFERRED_SIZE, 230, GroupLayout.PREFERRED_SIZE)
+            			.addContainerGap(33, Short.MAX_VALUE))
+            );
+            jPanel5.setLayout(jPanel5Layout);
         this.jPanel5.add(table);         // TODO add your handling code here:
+        jPanel5.updateUI();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
@@ -1149,6 +1184,5 @@ public class UserMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JButton saveBtn;
-    // End of variables declaration//GEN-END:variables
-
+    private GroupLayout jPanel5Layout;
 }
