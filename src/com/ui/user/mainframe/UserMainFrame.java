@@ -27,7 +27,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.ui.admin.mainframe;
+package com.ui.user.mainframe;
 
 import UI.ReportUI;
 import java.awt.Component;

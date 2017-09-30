@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
 
-import com.ui.admin.mainframe.UserMainFrame;
+import com.ui.user.mainframe.UserMainFrame;
 
 import java.awt.Color;
 
