@@ -8,6 +8,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
+
+import com.ui.admin.mainframe.UserMainFrame;
+
 import java.awt.Color;
 
 public class UIFrame extends JFrame{
@@ -16,7 +19,7 @@ public class UIFrame extends JFrame{
 		setResizable(false);
 		setSize(765,475);
                 //setIcon(new ImageIcon(UIFrame.class.getResource("/resources/logo.png")));
-                
+		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);        
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -62,6 +65,8 @@ public class UIFrame extends JFrame{
 	}
 	public static void main(String args[])
 	{
+		java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
 		String lookAndFeel = UIManager.getSystemLookAndFeelClassName();
 		try {
 			for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -85,5 +90,8 @@ public class UIFrame extends JFrame{
 			e.printStackTrace();
 		}
 		
+	
+            }
+	});
 	}
-}	
+}
